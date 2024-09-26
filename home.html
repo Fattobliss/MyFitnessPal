@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness pal Landing Page</title>
+    <link rel="stylesheet" href="{% static 'css/home1.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav><br><br>
+    <header>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Track Your Fitness Goals with My Fitness Pal</h1>
+                <p>Discover how our fitness tracker can help you stay fit and motivated. Achieve your goals with precision and ease.</p>
+                <a href="#cta" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+        
+    </header>
+    
+    <section id="features">
+        <div class="divide1">
+        <div class="container1">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>Real-time Tracking</h3>
+                <p>Monitor your activity and health metrics in real-time.</p>
+            </div>
+            <div class="feature">
+                <h3>Workouts</h3>
+                <p>Keep an eye on your workouts throughout the day.</p>
+            </div>
+            
+        </div>
+        <div class="image1">
+            <img src="{% static 'img/fitness2.jpg' %}" alt="" style="width: 40%;" >
+        </div>
+    </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container6">
+            <!-- <h2>Motivation</h2> -->
+            <!-- <div class="testimonial">
+                <p>"Fit pal tracks real-time data and is incredibly motivating!"</p>
+               
+            </div>
+            <div class="testimonial">
+                <p>"Fitness Pal has sleep analysis feature. It helps to improve the sleep quality and overall well-being."</p>
+                
+            </div> -->
+            <div class="container">
+                <h2>Motivation</h2>
+                <p>"Fit pal tracks real-time data and is incredibly motivating!"</p>
+                <p>"Fitness Pal has sleep analysis feature. It helps to improve the sleep quality and overall well-being."</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Transform the fitness journey with MyFitnessPal. Don't wait—take the first step today!</p>
+            <button onclick="signout()">signup</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function signout(){
+            window.location.href='/user/signup';
+        }
+        function about(){
+            window.location.href='/user/about';
+        }
+        function workouts(){
+            window.location.href='/workout';
+        }
+        function tracking(){
+            window.location.href='/features';
+        }
+        function contact(){
+            window.location.href='/user/contact';
+        }
+    </script>
+</body>
+</html>

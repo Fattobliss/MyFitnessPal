@@ -1,0 +1,135 @@
+
+.navbar {
+    /* background-color: #000000; */
+    padding: 1rem 0;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+.container1{
+    /* background-color: #000000; */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+    margin-left: 500px;
+}
+
+h1 {
+    margin-bottom: 20px;
+
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #218838;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    /* display: inline; */
+    background-color: #000000;
+    font-size: x-large;
+ 
+}
+
+#bmiValue {
+    font-size: 2em;
+    font-weight: bold;
+    background-color: black;
+    display: inline;
+    
+    
+}
+
+#bmiCategory {
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: black;
+    display: inline;
+    
+}
+footer {
+    background: #000000;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+    margin-top: 150px;
+}
+body{
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #00b318; */
+    background-image: url('../img/log.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}

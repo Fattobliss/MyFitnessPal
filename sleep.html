@@ -1,0 +1,106 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Monitoring</title>
+    <link rel="stylesheet" href="{% static 'css/sleep.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Sleep Monitoring</h1>
+        <form id="sleep-form">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="sleep-start">Sleep Start Time:</label>
+            <input type="time" id="sleep-start" name="sleep-start" required>
+            
+            <label for="sleep-end">Sleep End Time:</label>
+            <input type="time" id="sleep-end" name="sleep-end" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <div id="duration">
+            <h2>Sleep Summary</h2>
+            <p id="summary-text"></p>
+        </div>
+    </div>
+    <script>
+        function calculateSleepDuration(date, sleepStart, sleepEnd) {
+            if (date && sleepStart && sleepEnd) {
+                // Calculate sleep duration
+                const sleepStartTime = new Date(`${date}T${sleepStart}`);
+                const sleepEndTime = new Date(`${date}T${sleepEnd}`);
+        
+                // If sleep end time is before sleep start time, assume it is the next day
+                if (sleepEndTime <= sleepStartTime) {
+                    sleepEndTime.setDate(sleepEndTime.getDate() + 1);
+                }
+        
+                const duration = (sleepEndTime - sleepStartTime) / (1000 * 60 * 60); // Duration in hours
+        
+                // Send data via AJAX
+                $.ajax({
+                    url: '/createsleep/', // Adjust this to your server endpoint
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        date: date,
+                        sleepStart: sleepStart,
+                        sleepEnd: sleepEnd,
+                        duration: duration // Optional: send the calculated duration
+                    }),
+                    success: function(response) {
+                        // Handle success response
+                        console.log('Sleep duration calculated:', response.duration);
+                        alert(`Sleep Duration: ${response.duration} hours`);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error('Error calculating sleep duration:', error);
+                        alert('An error occurred while calculating sleep duration.');
+                    }
+                });
+            } else {
+                alert('Please provide all required inputs.');
+            }
+        }
+        
+        
+        
+                
+
+
+function about(){
+    window.location.href='/user/about';
+}
+function workouts(){
+    window.location.href='/workout';
+}
+function tracking(){
+    window.location.href='/features';
+}
+function contact(){
+    window.location.href='/user/contact';
+}
+
+    </script>
+</body>
+</html>

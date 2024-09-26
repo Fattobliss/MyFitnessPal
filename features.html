@@ -1,0 +1,99 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Display</title>
+    <link rel="stylesheet" href="{% static 'css/features1.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Features Display Section -->
+    <section class="features-section">
+        <div class="container">
+            <h1>Our Features</h1>
+            <br>
+            <br>
+            <br><br><br>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h2>WORKOUTS</h2>
+                    <button onclick="burn()">Explore Workout</button>
+                </div>
+                <div class="feature-card">
+                    <h2>TRACKING CALORIES BURN</h2>
+                    <button onclick="burn1()">Calculate Calories Burnt</button>
+                </div>
+                <div class="feature-card">
+                    <h2>TRACKING CALORIES INTAKE</h2>
+                    <button onclick="burn2()">Calculate Calories Intake</button>
+                </div>
+                <div class="feature-card">
+                    <h2>SLEEP MONITOR</h2>
+                    <button onclick="burn3()">Calculate Sleep Cycle</button>
+                </div>
+                <div class="feature-card">
+                    <h2>BMI</h2>
+                    <button onclick="burn4()">Calculate Body Mass Index</button>
+                </div>
+                <div class="feature-card">
+                    <h2>NUTRITION TRACKING</h2>
+                    <button onclick="burn5()">Calculate Nutrition in Food</button>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    <script>
+        function burn(){
+            window.location.href="/workout"
+        }
+        function burn1(){
+            window.location.href="/burnt"
+        }
+        function burn2(){
+            window.location.href="/intake"
+        }
+        function burn3(){
+            window.location.href="/sleep"
+        }
+        
+        function burn4(){
+            window.location.href="/bmi"
+        }
+        function burn5(){
+            window.location.href="/nutrition"
+        }
+        function signout(){
+            window.location.href='/user/signup';
+        }
+        function about(){
+            window.location.href='/user/about';
+        }
+        function workouts(){
+            window.location.href='/workout';
+        }
+        function tracking(){
+            window.location.href='/features';
+        }
+        function contact(){
+            window.location.href='/user/contact';
+        }
+        
+    </script>
+
+</html>

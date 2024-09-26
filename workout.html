@@ -1,0 +1,88 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts - Fitness Tracker</title>
+    <link rel="stylesheet" href="{% static 'css/workout.css' %}">
+ 
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+   <br>
+   <br><br>
+    <br>
+    <div class="box1">
+        <div class="box1left">
+            <h3>Weight Lifting</h3>
+                   
+            <p>Duration: 30 mins</p>
+        
+            <p>Calories Burn: 180 kcal</p>
+        </div>
+        <div class="box1right">
+            <img src="{% static 'img/fitness3.jpg' %}" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="box2">
+        <div class="box2left">
+            <h3>Cardio</h3>
+                   
+            <p>Duration: 30 mins</p>
+        
+            <p>Calories Burn: 300 kcal</p>
+        </div>
+        <div class="box2right">
+            <img src="{% static 'img/fitness5.jpg' %}" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="box3">
+        <div class="box3left">
+            <h3>Yoga</h3>
+                   
+            <p>Duration: 30 mins</p>
+        
+            <p>Calories Burn: 120 kcal</p>
+        </div>
+        <div class="box3right">
+            <img src="{% static 'img/yoga.jpg' %}" alt="">
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="container2">
+            <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+<script>
+    function about(){
+        window.location.href='/user/about';
+    }
+    function workouts(){
+        window.location.href='/workout';
+    }
+    function tracking(){
+        window.location.href='/features';
+    }
+    function contact(){
+        window.location.href='/user/contact';
+    }
+</script>
+</html>

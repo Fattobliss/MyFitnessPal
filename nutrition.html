@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Calculator</title>
+    <link rel="stylesheet" href="{% static 'css/nutrition.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br><br><br><br><br><br>
+
+
+
+    <div class="container1">
+        <h1>Nutrition Calculator</h1>
+        <br>
+        <form id="nutrition-form">
+            <label for="food-item">Food Item:</label>
+            <input type="text" id="wfoods" name="food-item" required>
+
+            <label for="quantity">Quantity (grams):</label>
+            <input type="number" id="quantitys" name="quantity" required>
+            <br><br>
+            <button type="button" onclick="calculateNutrition()">Calculate</button>
+        </form>
+        <br>
+        <div id="results" class="results">
+            <h2>Results:</h2>
+            <p id="calories">Calories: N/A</p>
+            <p id="protein">Protein: N/A</p>
+            <p id="carbs">Carbohydrates: N/A</p>
+            <p id="fat">Fat: N/A</p>
+        </div>
+    </div>
+
+    <script>
+        function about() {
+            window.location.href = '/user/about';
+        }
+        function workouts() {
+            window.location.href = '/workout';
+        }
+        function tracking() {
+            window.location.href = '/features';
+        }
+        function contact() {
+            window.location.href = '/user/contact';
+        }
+        const nutritionData = {
+            "apple": { calories: 52, protein: 0.3, carbs: 14, fat: 0.2 },
+            "banana": { calories: 89, protein: 1.1, carbs: 23, fat: 0.3 },
+            "carrot": { calories: 41, protein: 0.9, carbs: 10, fat: 0.2 },
+            "chicken": { calories: 41, protein: 50.9, carbs: 5, fat: 0.4 },
+            "fish": { calories: 31, protein: 60.9, carbs: 2, fat: 0.2 },
+            // Add more foods as needed
+        };
+
+     function calculateNutrition() {
+            const foodItem = document.getElementById('food-item').value.toLowerCase();
+            const quantity = parseFloat(document.getElementById('quantity').value);
+            
+            if (!nutritionData[foodItem]) {
+                alert('Food item not found');
+            }
+            
+            const nutrition = nutritionData[foodItem];
+            
+            document.getElementById('calories').textContent = `Calories: ${(nutrition.calories * quantity / 100).toFixed(2)}`;
+            document.getElementById('protein').textContent = `Protein: ${(nutrition.protein * quantity / 100).toFixed(2)}`;
+            document.getElementById('carbs').textContent = `Carbohydrates: ${(nutrition.carbs * quantity / 100).toFixed(2)}`;
+            document.getElementById('fat').textContent = `Fat: ${(nutrition.fat * quantity / 100).toFixed(2)}`;
+        }
+        function calculateNutrition() {
+            var foods = $('#wfoods').val();
+            var quantitys = $('#quantitys').val();
+            console.log(foods)
+            console.log(quantitys)
+            $.ajax({
+                type: "POST",
+                url: "{% url 'createnutri' %}",
+                data: {
+                    "foods_1": foods,
+                    "quantitys_1": quantitys,
+                },
+                success: function (data) {
+                    if (data["status"] === "pass") {
+                        $('#results').html(`<p>Your Nutrition : ${data.your_nutri}</p>`);
+
+                        alert('Success! nutrition stored.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                    alert('Error saving data.');
+                }
+            });
+        }
+
+    </script>
+
+    <footer>
+        <div class="container2">
+            <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

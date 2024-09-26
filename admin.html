@@ -1,0 +1,115 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="#dashboard" class="active">Dashboard</a></li>
+            <li><a href="#users">Users</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Dashboard</h1>
+            <div class="user-info">
+                <span>Admin Name</span>
+                <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+            </div>
+        </header>
+
+        <section class="widgets">
+            <div class="widget">
+                <h3>Sales</h3>
+                <p>$12,345</p>
+            </div>
+            <div class="widget">
+                <h3>Users</h3>
+                <p>678</p>
+            </div>
+            <div class="widget">
+                <h3>Orders</h3>
+                <p>456</p>
+            </div>
+            <div class="widget">
+                <h3>Revenue</h3>
+                <p>$9,876</p>
+            </div>
+        </section>
+
+        <section class="charts">
+            <!-- Charts will go here -->
+            <h2>Analytics</h2>
+            <div id="chart1" class="chart"></div>
+            <div id="chart2" class="chart"></div>
+        </section>
+    </div>
+
+    <script>
+        
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Chart.js
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    document.body.appendChild(script);
+
+    script.onload = function() {
+        // Create charts after Chart.js has loaded
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [10, 15, 8, 13, 17, 12],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    };
+});
+
+    </script>
+</body>
+</html>

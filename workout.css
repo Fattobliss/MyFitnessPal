@@ -1,0 +1,158 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #0c0c0c;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+.navbar {
+    /* background-color: #000000; */
+    padding: 1rem 0;
+    color: #000000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+.box1{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.box1left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    
+}
+.box1right img{
+    display: flex;
+    width: 500px;
+    height:300px ;
+    box-shadow: 3px 3px 3px 3px;
+    justify-content: center;
+    
+}
+.box2{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.box2left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* box-shadow: 3px 3px 3px 3px; */
+}
+.box2right img{
+    display: flex;
+    width: 500px;
+    height:300px ;
+    box-shadow: 3px 3px 3px 3px;
+    justify-content: center;
+    
+}
+.box3{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    
+}
+.box3left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* box-shadow: 3px 3px 3px 3px; */
+}
+.box3right img{
+    display: flex;
+    width: 500px;
+    height:300px ;
+    box-shadow: 3px 3px 3px 3px;
+    justify-content: center;
+    
+}
+
+
+
+footer {
+    background: #000000;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    color: #ffffff
+}
+
+footer .container2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    color: #ffffff;
+}

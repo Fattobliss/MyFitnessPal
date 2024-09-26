@@ -1,0 +1,133 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Intake Calculator</title>
+    <link rel="stylesheet" href="{% static 'css/intake.css' %}">
+    <!-- <link rel="stylesheet" href="home.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+<br><br><br>
+    <header>
+        <div class="container">
+            <h1>Calorie Intake Calculator</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="calculator-section">
+            <div class="calculator-container">
+                <h2>Calculate Your Calorie Intake</h2>
+                <form id="calorie-form">
+                    <div class="form-group">
+                        <label for="food">Type of Food</label>
+                        <select id="food" name="food">
+                            <option value="apple">Apple</option>
+                            <option value="banana">Banana</option>
+                            <option value="chicken">Chicken Breast</option>
+                            <option value="rice">Rice</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity (grams)</label>
+                        <input type="number" id="quantity" name="quantity" required>
+                    </div>
+                    <button type="button" id="calculate-btn" class="btn" onclick="check()">Calculate</button>
+                </form>
+                <div id="result" class="result">
+                    <!-- Result will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+<script>
+    function about(){
+        window.location.href='/user/about';
+    }
+    function workouts(){
+        window.location.href='/workout';
+    }
+    function tracking(){
+        window.location.href='/features';
+    }
+    function contact(){
+        window.location.href='/user/contact';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultDiv = document.getElementById('result');
+
+        const caloriesPerUnit = {
+            apple: 95,                  // Calories per apple
+            banana: 105,                // Calories per banana
+            chicken: 165 / 100,         // Calories per 100 grams of chicken
+            rice: 130 / 100             // Calories per 100 grams of rice
+        };
+
+        calculateBtn.addEventListener('click', () => {
+            const foodType = document.getElementById('ifood').value;
+            const quantity = parseFloat(document.getElementById('iquantity').value);
+
+            if (isNaN(quantity) || quantity <= 0) {
+                resultDiv.textContent = 'Please enter a valid quantity.';
+                return;
+            }
+
+            const caloriesPerGram = caloriesPerUnit[foodType];
+            const totalCalories = foodType === 'apple' || foodType === 'banana'
+                ? caloriesPerUnit[foodType] // Whole item (no need for quantity conversion)
+                : caloriesPerGram * quantity; // For items like chicken and rice (grams)
+
+            resultDiv.textContent = `You have consumed approximately ${totalCalories.toFixed(2)} calories.`;
+        });
+    });
+    function check() {
+        var food = $('#food').val();
+        var quantity = $('#quantity').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/create_intake/",
+            data: { "food_1": food, "quantity_1": quantity },
+            success: function(data) {
+                if(data["status"] === "pass") {
+                    $('#result').html(`<p>Calories Intake: ${data.calories_intake}</p>`);
+                    alert('Success! Calories burned stored.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                alert('Error saving data.');
+            }
+
+        })
+    }
+
+</script>
+
+</html>

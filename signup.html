@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <!-- <form action="/signup" method="post"> -->
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" id="confirmpassword" name="confirmpassword" required>
+            </div>
+            <button type="submit" class="btn" onclick="check()">Sign Up</button>
+        
+        <p class="message">Already have an account? <a onclick="login()">Login here</a></p>
+    </div>
+    <script>
+        function login(){
+            window.location.href="/user/login"
+        }
+      
+        function check(){
+            var fullname= $('#fullname').val();
+            var email= $('#email').val();
+            var username= $('#username').val();
+            var password= $('#password').val();
+            var confirmpassword = $('#confirmpassword').val();
+            console.log(fullname);
+            console.log(email);
+            console.log(username);
+            console.log(password);
+            console.log(confirmpassword);
+
+
+            $.ajax({
+                type: "POST",
+                url:  "/user/createstaff/",
+                data: {"fullname": fullname ,"email":email, "username":username , "password": password , "confirmpassword":confirmpassword},
+                success: function(data)
+                {
+                    if(data){
+                        window.location.href="/user/login"
+                        //window.location.replace("/user/view_staff");
+                        console.log(data);
+                    }
+                    
+                    //window.location.replace("user/view_staff");
+               
+                }
+                
+
+            })
+        }
+    </script>
+</body>
+</html>

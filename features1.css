@@ -1,0 +1,122 @@
+/* General Reset and Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #fff; */
+    background-image: url('../img/log.jpg');
+    background-position:center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    /* background-color: #000000; */
+    padding: 1rem 0;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Features Section Styles */
+.features-section {
+    padding: 5rem 1rem;
+    /* background-color: #000000; */
+}
+
+.features-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.features-section h1 {
+    margin-bottom: 2rem;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 5rem;
+    /* display: flex;
+    flex-direction: column;
+    gap: 40px; */
+}
+
+.feature-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.feature-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.feature-card p {
+    color: #ffffff;
+    line-height: 1.6;
+}
+button{
+    padding: 10px;
+    color: #000000;
+}
+footer {
+    background: #f1f1f1;
+    text-align: center;
+    padding: 20px 0;
+}
+.container h1{
+    color: #ffffff;
+    /* background: #000000; */
+}

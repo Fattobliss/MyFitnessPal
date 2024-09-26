@@ -1,0 +1,114 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/burnt1.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <title>Calories Burn Calculator</title>
+    
+  
+
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+<br><br><br>
+    
+
+    <header>
+        <div class="container">
+            <h1>Calories Burn Calculator</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="calculator-section">
+            <div class="calculator-container">
+                <h2>Calculate Calories Burned</h2>
+                <form id="calories-form">
+                    <div class="form-group">
+                        <label for="exercise">Type of Exercise</label>
+                        <select id="exercise" name="exercise">
+                            <option value="cardio">Cardio</option>
+                            <!-- <option value="cycling">Cycling</option> -->
+                            <option value="weightlifting">Weight Lifting</option>
+                            <option value="yoga">Yoga</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" name="duration" required>
+                    </div>
+                    <button type="button" id="calculate-btn" class="btn" onclick="check()">Calculate</button>
+                </form>
+                <div id="result" class="result">
+                    <!-- Result will be displayed here -->
+            
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function about(){
+            window.location.href='/user/about';
+        }
+        function workouts(){
+            window.location.href='/workout';
+        }
+        function tracking(){
+            window.location.href='/features';
+        }
+        function contact(){
+            window.location.href='/user/contact';
+        }
+            function check() {
+                var exercise = $('#exercise').val();
+                var duration = $('#duration').val();
+            
+                $.ajax({
+                    type: "POST",
+                    url: "/create_burnt/",
+                    data: {
+                        "exercise_1": exercise,
+                        "duration_1": duration,
+                        <!-- csrfmiddlewaretoken: '{{ csrf_token }}' -->
+                    },
+                    success: function(data) {
+                        if(data["status"] === "pass") {
+                            $('#result').html(`<p>Calories Burned: ${data.calories_burned}</p>`);
+                            alert('Success! Calories burned stored.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('Error saving data.');
+                    }
+                });
+            }
+        
+        
+
+    </script>
+</body>
+
+</html>

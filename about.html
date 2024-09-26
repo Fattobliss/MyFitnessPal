@@ -1,0 +1,128 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fitness Tracker</title>
+    
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MyFitnessPal</a>
+            <ul class="nav-links">
+                <li><a onclick="about()">About</a></li>
+                <li><a onclick="workouts()">Workouts</a></li>
+                <li><a onclick="tracking()">Tracking</a></li>
+                <li><a onclick="contact()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+<br><br>
+    <main>
+        <div class="aboutintro">
+            <div class="container0">
+                <h2>About Us</h2>
+                <p>Welcome to Fitness Tracker, your ultimate partner in achieving your fitness goals. Our mission is to provide you with the tools and support you need to live a healthier, more active life.</p>
+            </div>
+            <div class="container1">
+                <img src="{% static 'img/about.jpg' %}" alt="" width="500px">
+            </div>
+        </div>
+
+        <section class="our-mission">
+            <div class="container3">
+                <h1>Our Mission</h1>
+                <p>At MyFitnessPal, we are dedicated to helping you stay motivated and on track with your fitness journey. Our platform offers comprehensive tracking, personalized insights, and a supportive community to help you reach your goals.</p>
+               <br><br> <div class="mission-statement">
+                    <div class="statement">
+                        <h3>Track Your Progress</h3>
+                        <p>Monitor your workouts, nutrition, and sleep to get a complete picture of your health.</p>
+                    </div>
+                    <div class="statement">
+                        <h3>Stay Motivated</h3>
+                        <p>Set goals, receive encouragement, and celebrate your achievements with our interactive features.</p>
+                    </div>
+                    <div class="statement">
+                        <h3>Join Our Community</h3>
+                        <p>Connect with like-minded individuals and share your fitness journey with a supportive network.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+            <div class="container4">
+                <h1>Meet the Team</h1>
+                <br><br>
+                <div class="team-member1">
+                    <div class="img1">
+                        <img src="{% static 'img/ak1.jpg' %}" alt="" width="300px">
+                    </div>
+                    <div class="info1"><h3>Akshay Sunder</h3>
+                    <p>Founder & CEO. Akshay is passionate about fitness and wellness, and he leads the vision for MyFitnessPal.</p>
+                </div>
+           
+                
+            </div>
+       
+    </main>
+
+
+        <footer>
+            <div class="container2">
+                <p>&copy; 2024 MyFitnessPal. All rights reserved.</p>
+            </div>
+        </footer>
+    
+    
+</body>
+<script>
+    function about(){
+        window.location.href='/user/about';
+    }
+    function workouts(){
+        window.location.href='/workout';
+    }
+    function tracking(){
+        window.location.href='/features';
+    }
+    function contact(){
+        window.location.href='/user/contact';
+    }
+    function check(){
+        var fullname= $('#fullname').val();
+        var email= $('#email').val();
+        var username= $('#username').val();
+        var password= $('#password').val();
+        var confirmpassword = $('#confirmpassword').val();
+        console.log(fullname);
+        console.log(email);
+        console.log(username);
+        console.log(password);
+        console.log(confirmpassword);
+
+
+        $.ajax({
+            type: "POST",
+            url:  "/user/createstaff/",
+            data: {"fullname": fullname ,"email":email, "username":username , "password": password , "confirmpassword":confirmpassword},
+            success: function(data)
+            {
+                if(data){
+                    //window.location.href="/user/about"
+                    console.log(data);
+                }
+                
+                //window.location.replace("user/view_staff");
+           
+            }
+            
+
+        })
+    }
+</script>
+</html>

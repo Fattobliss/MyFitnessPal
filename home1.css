@@ -1,0 +1,162 @@
+.navbar {
+    /* background-color: #000000; */
+    padding: 1rem 0;
+    color: #000000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+header {
+    background: #000000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+
+.hero {
+    background-image: url("../img/sun.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-text {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background: #e63946;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+section {
+    padding: 60px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #fff;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.feature, .testimonial {
+    margin-bottom: 20px;
+}
+
+.testimonial p {
+    font-style: italic;
+}
+
+footer {
+    background: #000000;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+}
+.divide1{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #000000;
+    /* gap: 450px; */
+}
+.image1{
+    margin-right: -400px;
+    justify-content: center;
+}
+ .container1{
+    
+    margin-left: 10%;
+    color: #f1f1f1;
+   /* display: inline-block; */
+} 
+.container2{
+    justify-content: center;
+    
+    color: #ffffff;
+}
+button{
+    display: flex;
+    padding: 10px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.testimonial{
+    color: #ffffff;
+}
+p{
+    color: #ffffff;
+}

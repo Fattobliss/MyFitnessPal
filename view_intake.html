@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <table class="table" style="border: 1px solid black;" >
+            <thead>
+                <tr style="background-color: blueviolet; color : white" >
+                    <td>food</td>
+                    <td>quantity</td>
+                    <td>results</td>
+                 
+                    
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in userdata %}
+                <tr>
+                    <td>{{ obj.food }}</td>
+                    <td>{{ obj.quantity }}</td>
+                    <td>{{ obj.results }}</td>
+                    
+                    <td><button onclick="deleterecord('{{ obj.food }}')">delete</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            function deleterecord(quantity){
+                console.log(quantity);
+                $.ajax({
+                    type: "POST",
+                    url : "{% url 'delete_user' %}",
+                    data : {"quantity": quantity},
+                    success : function(data)
+                    {
+                        console.log(data);
+                        window.location.replace("/features/view_intake");
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
